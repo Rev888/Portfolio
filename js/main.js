@@ -99,22 +99,6 @@
     }
   }
 
-  /* ---------- battery manufacturing line (from internship study) ---------- */
-  const STAGES = [
-    ["Lead ingots → cylinder caster", "Ball mills — 99.97% pure lead-oxide powder", "Silos, filter & day tank", "Grid casting / strip casting", "Paste preparation with additives", "ASG pasting line (Automated Stamped Grid)", "Grid ageing ovens — moisture removal"],
-    ["Plate stacking (+/− per battery spec)", "Envelope insulation on negative plates", "COS strap casting", "Container insertion", "HVPT — high-voltage potential test", "Inter-cell welding (ICW)", "Weld testing", "Heat sealing of lid", "Charge-eye insertion", "Post burning", "Type engraving / laser marking → duff battery"],
-    ["Acid filling — H₂SO₄ at required specific gravity", "Vent cap fitted", "Charging in water-cooled tubs", "Dump & refill (model-specific)", "Process vents added"],
-    ["Process vent removal", "Acid top-up", "Permanent vent cap", "Washing & drying", "HRD — high-rate discharge test", "Post polishing & handle fitting", "HVT — high-voltage test", "Laser marking of serial number", "Brand & MP labels", "360° vision inspection", "Web sealing / cartoning", "Skid stacking & stretch wrap → dispatch"],
-  ];
-  const lineBtns = $$(".line button");
-  const lineSteps = $("#line-steps");
-  const setStage = (i) => {
-    lineBtns.forEach((b, k) => b.setAttribute("aria-selected", String(k === i)));
-    lineSteps.innerHTML = STAGES[i].map((s, k) => `<li style="--i:${k}">${s}</li>`).join("");
-  };
-  lineBtns.forEach((b) => b.addEventListener("click", () => setStage(+b.dataset.stage)));
-  if (lineSteps) setStage(0);
-
   /* ---------- modals (resume, project details) + lightbox ---------- */
   const lock = () => document.body.classList.toggle("is-locked", !!$(".modal:not([hidden]), .lightbox:not([hidden])"));
   const focusStack = [];
